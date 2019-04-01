@@ -1,9 +1,9 @@
-class ssh_authorised::config{
+class ssh_authorized::config{
 				file { '/etc/ssh/sshd_config':
 								owner => "root",
 								group => "root",
 								mode => 0440,
-								source => "puppet:///modules/ssh_authorised/etc/ssh/ssd_config",
+								source => "puppet:///modules/ssh_authorized/etc/ssh/sshd_config",
 				}
 
 				ssh_authorized_key { 'nichtj3':

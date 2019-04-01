@@ -1,4 +1,4 @@
-class ssh_authorised::install{
+class ssh_authorized::install{
 	package{ "ssh":
 		ensure => present,
 	}
