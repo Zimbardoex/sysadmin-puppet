@@ -1,13 +1,13 @@
 class nagios::config{
-	file{ '/etc/nagios3/nagios.cfg':
-		ensure => present,
-		source => "puppet:///modules/nagios/nagios.cfg",
-		mode => 0444,
-		owner => "root",
-		group => "root",
-		require => Class["nagios::install"],
-		notify => Class["nagios::service"],
-	}
+	#file{ '/etc/nagios3/nagios.cfg':
+	#	ensure => present,
+	#	source => "puppet:///modules/nagios/nagios.cfg",
+	#	mode => 0444,
+	#	owner => "root",
+	#	group => "root",
+	#	require => Class["nagios::install"],
+	#	notify => Class["nagios::service"],
+	#}
 
 	file{ '/etc/nagios3/htpasswd.users':
 		ensure => present,	
@@ -16,7 +16,7 @@ class nagios::config{
 		owner => "root",
 		group => "root",
 		require => Class["nagios::install"],
-		notify => Class["nagios::service"],
+		notify  => Class["nagios::service"],
 	}
 
 	file{ '/etc/nagios3/conf.d':
@@ -24,7 +24,8 @@ class nagios::config{
 		owner 	=> "root",
 		group 	=> "root",
 		mode 	=> 0444,
-		
+		require => Class["nagios::install"],
+		notify  => Class["nagios::service"],
 	}
 
 	nagios_host{ "group10db.foo.org.nz":
