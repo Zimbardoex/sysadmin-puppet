@@ -1,6 +1,7 @@
 # sysadmin-puppet
-Puppet files for system administration.
+Puppet files for systems administration.
 
 ## Users
 NICHTJ3
+
 Zimbardoex
