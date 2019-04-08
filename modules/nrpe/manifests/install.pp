@@ -1,15 +1,16 @@
-class npre::install{
-		package{"nagios-npre-server":
+class nrpe::install{
+		package{"nagios-nrpe-server":
 			ensure=>present,
-			requires=>User["nagios"],
+			require=>User["nagios"],
 		}
 
 		user{"nagios":
 			ensure=>present,
-			requires=>Group["nagios"],
+
+			require=>Group["nagios"],
 		}
 
-		Group{"nagios":
+		group{"nagios":
 			ensure=>present,
 		}
 }

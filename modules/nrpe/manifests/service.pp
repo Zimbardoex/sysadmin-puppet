@@ -1,10 +1,10 @@
-class npre::service{
-	service{"nagios-npre-server":
+class nrpe::service{
+	service{"nagios-nrpe-server":
 		ensure => running,
 			hasstatus => true,
 			hasrestart => true,
 			enable => true,
-			require => Class["npre::config"],
+			require => Class["nrpe::config"],
 
 	}
 }

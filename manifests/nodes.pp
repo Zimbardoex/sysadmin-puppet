@@ -13,6 +13,6 @@ node 'group10mgmt.foo.org.nz'{
 }
 
 node 'group10db.foo.org.nz'{
-	include npre
+	include nrpe
 }
 

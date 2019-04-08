@@ -1,11 +1,11 @@
-class npre::config{
-	file{"/etc/nagios/npre.cfg":
+class nrpe::config{
+	file{"/etc/nagios/nrpe.cfg":
 			ensure=>present,
-			source=>"puppet:///modules/npre/npre.cfg",
+			source=>"puppet:///modules/nrpe/nrpe.cfg",
 			mode=>0644,
 			owner=>"root",
 			group=>"root",
-			require=>class["nagios::install"],
-			notify=>class["nagios::service"]
+			require=>Class["nrpe::install"],
+			notify=>Class["nrpe::service"]
 	}
 }

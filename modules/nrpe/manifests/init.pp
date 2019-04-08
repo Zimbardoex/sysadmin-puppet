@@ -1,3 +1,3 @@
-class npre{
-	include npre::install,npre::config,npre::service
+class nrpe{
+	include nrpe::install,nrpe::config,nrpe::service
 }
