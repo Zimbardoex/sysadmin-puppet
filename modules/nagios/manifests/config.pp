@@ -51,6 +51,29 @@ class nagios::config{
 		notify  => Class["nagios::service"],
 	}
 
+	nagios_hostgroup {'remote-disks':
+		alias => 'Remote Disks',
+		members => 'group10db.foo.org.nz',
+		notify => Class["nagios::service"],
+	}
+
+	nagios_service {'remote-disk-service':
+		service_description => 'Servers where the remote disks are monitored.',
+		hostgroup_name => 'remote-disks',
+		target => '/etc/nagios-plugins/config/check_nrpe.cfg',
+		check_command => 'check_npre_1arp!check_sda1',
+		max_check_attempts => 3,
+		retry_check_interval => 1,
+		normal_check_interval => 5,
+		check_period => '24x7',
+		notification_interval => 30,
+		notification_period => '24x7',
+		notification_options => 'w,u,c',
+		contact_groups => 'admins',
+		notify  => Class["nagios::service"],
+
+		
+
 	nagios_hostgroup {'mariadb-servers':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'MariaDB Servers',
