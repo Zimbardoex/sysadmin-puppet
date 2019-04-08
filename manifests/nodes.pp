@@ -12,3 +12,7 @@ node 'group10mgmt.foo.org.nz'{
 	include nagios
 }
 
+node 'group10db.foo.org.nz'{
+	include npre
+}
+
