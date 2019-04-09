@@ -51,7 +51,8 @@ class nagios::config{
 		notify  => Class["nagios::service"],
 	}
 
-	nagios_hostgroup {'remote-disks':
+	nagios_hostgroup {'remote-disks':	
+		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Disks',
 		members => 'group10db.foo.org.nz',
 		notify => Class["nagios::service"],
@@ -60,8 +61,8 @@ class nagios::config{
 	nagios_service {'remote-disk-service':
 		service_description => 'Servers where the remote disks are monitored.',
 		hostgroup_name => 'remote-disks',
-		target => '/etc/nagios-plugins/config/check_nrpe.cfg',
-		check_command => 'check_npre_1arp!check_sda1',
+		target => '/etc/nagios3/conf.d/ppt_services.cfg',
+		check_command => 'check_nrpe_1arg!check_sda1',
 		max_check_attempts => 3,
 		retry_check_interval => 1,
 		normal_check_interval => 5,
@@ -71,8 +72,7 @@ class nagios::config{
 		notification_options => 'w,u,c',
 		contact_groups => 'admins',
 		notify  => Class["nagios::service"],
-
-		
+	}	
 
 	nagios_hostgroup {'mariadb-servers':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
