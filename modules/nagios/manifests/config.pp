@@ -54,7 +54,7 @@ class nagios::config{
 	nagios_hostgroup {'remote-disks':	
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Disks',
-		members => 'group10db.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz,group10backups.foo.org.nz',
 		notify => Class["nagios::service"],
 	}
 
