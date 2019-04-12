@@ -1,4 +1,4 @@
-node /group10(:?mgmt|db|backups|app).foo.org.nz/ {
+node 'group10db.foo.org.nz', 'group10backups.foo.org.nz', 'group10app.foo.org.nz'{
 	package {'vim': ensure => present }
 	include sudo
 	include ntp_service
@@ -6,13 +6,18 @@ node /group10(:?mgmt|db|backups|app).foo.org.nz/ {
 	include tidy_files
 	include ssh_authorized
 	include puppet_service
-}
 
-node 'group10mgmt.foo.org.nz'{
-	include nagios
-}
-
-node /group10(:?db|backups|app).foo.org.nz/ {
 	include nrpe
 }
 
+node 'group10mgmt.foo.org.nz'{
+	package {'vim': ensure => present }
+	include sudo
+	include ntp_service
+	include mariadb
+	include tidy_files
+	include ssh_authorized
+	include puppet_service
+
+	include nagios
+}
