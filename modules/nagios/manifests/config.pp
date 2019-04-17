@@ -72,7 +72,31 @@ class nagios::config{
 		notification_options => 'w,u,c',
 		contact_groups => 'admins',
 		notify  => Class["nagios::service"],
-	}	
+	}
+
+	nagios_hostgroup {'remote-processors':	
+		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
+		alias => 'Remote Processors',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz,group10backups.foo.org.nz',
+		notify => Class["nagios::service"],
+	}
+
+	nagios_service {'remote-processor-service':
+		service_description => 'Servers where the processors are monitored.',
+		hostgroup_name => 'remote-processors',
+		target => '/etc/nagios3/conf.d/ppt_services.cfg',
+		check_command => 'check_nrpe_1arg!check_load',
+		max_check_attempts => 3,
+		retry_check_interval => 1,
+		normal_check_interval => 5,
+		check_period => '24x7',
+		notification_interval => 30,
+		notification_period => '24x7',
+		notification_options => 'w,u,c',
+		contact_groups => 'admins',
+		notify  => Class["nagios::service"],
+	}
+
 
 	nagios_hostgroup {'mariadb-servers':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
