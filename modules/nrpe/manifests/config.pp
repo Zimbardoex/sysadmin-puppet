@@ -12,8 +12,8 @@ class nrpe::config{
 	file{"/usr/lib/nagios/plugins/check_mem.pl":
 			ensure=>present,
 			source=>"puppet:///modules/nrpe/check_mem.pl",
-			mode=>0644,
-			owner=>"root",
+			mode=>0774,
+			owner=>"nagios",
 			group=>"root",
 			require=>Class["nrpe::install"],
 			notify=>Class["nrpe::service"]

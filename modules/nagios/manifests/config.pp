@@ -54,7 +54,7 @@ class nagios::config{
 	nagios_hostgroup {'remote-memory':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Memory',
-		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz, group10mgmt.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz',
 		notify  => Class["nagios::service"],
 	}
 
@@ -62,7 +62,7 @@ class nagios::config{
 		service_description => 'Service where memory usage is monitored.',
 		hostgroup_name => 'remote-memory',
 		target => '/etc/nagios3/conf.d/ppt_services.cfg',
-		check_command => 'check_mem',
+		check_command => 'check_nrpe_1arg!check_mem',
 		max_check_attempts => 3,
 		retry_check_interval => 1,
 		normal_check_interval => 5,
