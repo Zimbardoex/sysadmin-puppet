@@ -191,4 +191,35 @@ class nagios::config{
 		notification_options => "d,u,r",
 		mode => 0444,
 	}
+
+	nagios_contact{ 'nichtj3':
+		target => '/etc/nagios3/conf.d/ppt_contacts.cfg',
+		alias => 'Trent Nicholson',
+		service_notification_period => '24x7',
+		host_notification_period => '24x7',
+		service_notification_options => 'w,u,c,r',
+		host_notification_options => 'd,r',
+		service_notification_commands => 'notify-service-by-slack',
+		host_notification_commands => 'notify-host-by-slack',
+		email => 'nichtj3@student.op.ac.nz',
+	}
+
+	nagios_contact{ 'chril2':
+		target => '/etc/nagios3/conf.d/ppt_contacts.cfg',
+		alias => 'Liam christensen',
+		service_notification_period => '24x7',
+		host_notification_period => '24x7',
+		service_notification_options => 'w,u,c,r',
+		host_notification_options => 'd,r',
+		service_notification_commands => 'notify-service-by-slack',
+		host_notification_commands => 'notify-host-by-slack',
+		email => 'chril2@student.op.ac.nz',
+	}
+
+	nagios_contactgroup{'sysadmins':
+		target => '/etc/nagios3/conf.d/ppt_contactgroups.cfg',
+		alias => 'System Administrators',
+		members=> 'nichtj3,chril2'
+
+	}
 }
