@@ -20,4 +20,5 @@ node 'group10mgmt.foo.org.nz'{
 	include puppet_service
 
 	include nagios
+	include nagios-slack-notifications
 }
