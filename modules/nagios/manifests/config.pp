@@ -47,7 +47,7 @@ class nagios::config{
 		notification_interval => 30,
 		notification_period => '24x7',
 		notification_options => 'w,u,c',
-		contact_groups => 'admins',
+		contact_groups => 'sysadmins',
 		notify  => Class["nagios::service"],
 	}
 
@@ -70,7 +70,7 @@ class nagios::config{
 		notification_interval => 30,
 		notification_period => '24x7',
 		notification_options => 'w,u,c',
-		contact_groups => 'admins',
+		contact_groups => 'sysadmins',
 		notify  => Class["nagios::service"],
 	}
 
@@ -93,7 +93,7 @@ class nagios::config{
 		notification_interval => 30,
 		notification_period => '24x7',
 		notification_options => 'w,u,c',
-		contact_groups => 'admins',
+		contact_groups => 'sysadmins',
 		notify  => Class["nagios::service"],
 	}
 
@@ -116,7 +116,7 @@ class nagios::config{
 		notification_interval => 30,
 		notification_period => '24x7',
 		notification_options => 'w,u,c',
-		contact_groups => 'admins',
+		contact_groups => 'sysadmins',
 		notify  => Class["nagios::service"],
 	}
 
@@ -140,7 +140,7 @@ class nagios::config{
 		notification_interval => 30,
 		notification_period => '24x7',
 		notification_options => 'w,u,c',
-		contact_groups => 'admins',
+		contact_groups => 'sysadmins',
 		notify  => Class["nagios::service"],
 	}
 
