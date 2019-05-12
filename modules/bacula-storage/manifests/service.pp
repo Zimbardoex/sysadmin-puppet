@@ -1,5 +1,5 @@
-class bacula-director::service{
-  service { "bacula-director" :
+class bacula-storage::service{
+  service { "bacula-sd" :
     ensure => running,
            hasstatus => true,
            hasrestart => true,

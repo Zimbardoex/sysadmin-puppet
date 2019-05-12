@@ -1,5 +1,5 @@
-class bacula-director::service{
-  service { "bacula-director" :
+class bacula-file::service{
+  service { "bacula-fd" :
     ensure => running,
            hasstatus => true,
            hasrestart => true,
