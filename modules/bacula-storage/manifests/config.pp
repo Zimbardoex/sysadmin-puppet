@@ -1,4 +1,4 @@
-class bacula-director::config{
+class bacula-storage::config{
   file { '/etc/bacula/bacula-sd.conf':
     ensure=>present,
       source=>"puppet:///modules/bacula-director/bacula-sd.conf",

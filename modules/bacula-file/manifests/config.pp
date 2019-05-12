@@ -1,4 +1,4 @@
-class bacula-director::config{
+class bacula-file::config{
   file { '/etc/bacula/bacula-fd.conf':
     ensure=>present,
       source=>"puppet:///modules/bacula-director/bacula-fd.conf",
