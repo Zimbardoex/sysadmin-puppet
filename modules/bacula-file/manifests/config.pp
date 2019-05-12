@@ -5,6 +5,6 @@ class bacula-file::config{
       mode=>0644,
       owner=>"root",
       group=>"root",
-      notify=>Class["check_resolv::service"]
+      notify=>Class["bacula-file::service"]
   }
 }
