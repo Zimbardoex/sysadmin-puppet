@@ -25,6 +25,7 @@ node 'group10backups.foo.org.nz'{
 
 	include nrpe
 	include bacula-storage
+	include bacula-director
 }
 
 node 'group10mgmt.foo.org.nz'{
@@ -40,5 +41,4 @@ node 'group10mgmt.foo.org.nz'{
 
 	include nagios
 	include nagios-slack-notifications
-	include bacula-director
 }

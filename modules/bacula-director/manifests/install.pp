@@ -3,7 +3,7 @@ class bacula-director::install{
     ensure=>present,
   }
 
-  package {'bacula.console':
+  package {'bacula-console':
     ensure => present,
   }
 }
