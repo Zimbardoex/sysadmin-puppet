@@ -7,7 +7,7 @@ class bacula-mysql-backup::config{
 	cron { 'backup-mysql':
 		command => "mysqldump --all-databases --add-drop-table > /etc/bacula/mysql-backup.db-backup.sql",
 		user    => root,
-		hour    => '10',
+		hour    => '22',
 		minute  => '20',
 	}
 }
