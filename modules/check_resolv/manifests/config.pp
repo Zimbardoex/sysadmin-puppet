@@ -9,7 +9,6 @@ class check_resolv::config{
 		mode=>0644,
 		owner=>"root",
 		group=>"root",
-		notify=>Class["check_resolv::service"]
         }
 
 	file { '/etc/puppet/check_resolv/resolv.conf':
@@ -18,7 +17,6 @@ class check_resolv::config{
 		mode=>0644,
 		owner=>"root",
 		group=>"root",
-		notify=>Class["check_resolv::service"]
         }
 
 	cron { 'check-resolv':   
@@ -26,6 +24,5 @@ class check_resolv::config{
 		user    => root,
 		hour    => '*',   
 		minute  => '*',
-		notify  => Class["check_resolv::service"]
 	}
 }
