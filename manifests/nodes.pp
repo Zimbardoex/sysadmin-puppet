@@ -10,6 +10,7 @@ node 'group10app.foo.org.nz'{
 	include bacula-file
 
 	include nrpe
+	include owncloud
 }
 
 node 'group10db.foo.org.nz'{

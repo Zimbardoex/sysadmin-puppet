@@ -50,6 +50,29 @@ class nagios::config{
 		contact_groups => 'sysadmins',
 		notify  => Class["nagios::service"],
 	}
+	
+	nagios_service {'owncloud':
+		service_description => 'Servers where owncloud runs',
+		hostgroup_name => 'owncloud-servers',
+		target => '/etc/nagios3/conf.d/ppt_services.cfg',
+		check_command => 'check_http',
+		max_check_attempts => 3,
+		retry_check_interval => 1,
+		normal_check_interval => 5,
+		check_period => '24x7',
+		notification_interval => 30,
+		notification_period => '24x7',
+		notification_options => 'w,u,c',
+		contact_groups => 'sysadmins',
+		notify  => Class["nagios::service"],
+	}
+
+	nagios_hostgroup {'owncloud-servers':
+		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
+		alias => 'Owncloud Servers',
+		members => 'group10app.foo.org.nz',
+		notify => Class["nagios::service"],
+	}
 
 	nagios_hostgroup {'remote-memory':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
