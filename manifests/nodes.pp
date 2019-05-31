@@ -11,7 +11,6 @@ node 'group10app.foo.org.nz'{
 	include no_dns_update
 
 	include nrpe
-	include owncloud
 }
 
 node 'group10db.foo.org.nz'{
