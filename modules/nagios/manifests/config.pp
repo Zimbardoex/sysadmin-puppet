@@ -28,6 +28,29 @@ class nagios::config{
 		notify  => Class["nagios::service"],
 	}
 
+	nagios_hostgroup {'check-filechange-servers':
+		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
+		alias => 'Check ETC Servers',
+		members => 'group10mgmt.foo.org.nz',
+		notify => Class["nagios::service"],
+	}
+
+	nagios_service {'check-filechange':
+		service_description => 'Checks /etc for changes',
+		hostgroup_name => 'check-filechange-servers',
+		target => '/etc/nagios3/conf.d/ppt_services.cfg',
+		check_command => 'check_filechange',
+		max_check_attempts => 3,
+		retry_check_interval => 1,
+		normal_check_interval => 5,
+		check_period => '24x7',
+		notification_interval => 30,
+		notification_period => '24x7',
+		notification_options => 'w,u,c',
+		contact_groups => 'sysadmins',
+		notify  => Class["nagios::service"],
+	}
+
 	nagios_hostgroup {'ssh-servers':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'SSH Servers',
