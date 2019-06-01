@@ -18,4 +18,32 @@ class nrpe::config{
 			require=>Class["nrpe::install"],
 			notify=>Class["nrpe::service"]
 	}
+
+	file{"/var/log/inotify":
+		ensure => directory,
+		mode => 0776,
+		owner => "root",
+		group => "root",
+		require => Class["nrpe::install"],
+		notify => Class["nrpe::service"]	
+	}
+
+	file{"/var/log/inotify/inotify.log":
+			ensure=>present,
+			mode=>0774,
+			owner=>"nagios",
+			group=>"root",
+			require=>Class["nrpe::install"],
+			notify=>Class["nrpe::service"]
+	}
+
+	file{"/usr/lib/nagios/plugins/check_filechange":	
+			ensure=>present,
+			source=>"puppet:///modules/nrpe/check_filechange",
+			mode=>0774,
+			owner=>"nagios",
+			group=>"root",
+			require=>Class["nrpe::install"],
+			notify=>Class["nrpe::service"]
+	}
 }

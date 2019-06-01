@@ -1,16 +1,20 @@
 class nrpe::install{
-		package{"nagios-nrpe-server":
-			ensure=>present,
-			require=>User["nagios"],
-		}
+	package{"nagios-nrpe-server":
+		ensure=>present,
+		require=>User["nagios"],
+	}
 
-		user{"nagios":
-			ensure=>present,
+	package{"inotify-tools":
+		ensure => present,
+	}
 
-			require=>Group["nagios"],
-		}
+	user{"nagios":
+		ensure=>present,
 
-		group{"nagios":
-			ensure=>present,
-		}
+		require=>Group["nagios"],
+	}
+
+	group{"nagios":
+		ensure=>present,
+	}
 }
