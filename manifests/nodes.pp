@@ -13,6 +13,21 @@ node 'group10app.foo.org.nz'{
 	include nrpe
 }
 
+node 'group10app2.foo.org.nz'{
+	package {'vim': ensure => present }
+	include sudo
+	include ntp_service
+	include mariadb
+	include tidy_files
+	include ssh_authorized
+	include puppet_service
+	include check_resolv
+	include bacula-file
+	include no_dns_update
+	include owncloud
+
+	include nrpe
+}
 node 'group10db.foo.org.nz'{
 	package {'vim': ensure => present }
 	include sudo
@@ -54,7 +69,7 @@ node 'group10mgmt.foo.org.nz'{
 	include tidy_files
 	include ssh_authorized
 	include puppet_service
-	include check_resolv
+	#include check_resolv
 	include bacula-file
 	include no_dns_update
 

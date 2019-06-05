@@ -54,7 +54,7 @@ class nagios::config{
 	nagios_hostgroup {'ssh-servers':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'SSH Servers',
-		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz, group10mgmt.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz, group10mgmt.foo.org.nz, group10app2.foo.org.nz',
 		notify  => Class["nagios::service"],
 	}
 
@@ -93,7 +93,7 @@ class nagios::config{
 	nagios_hostgroup {'owncloud-servers':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Owncloud Servers',
-		members => 'group10app.foo.org.nz',
+		members => 'group10app.foo.org.nz, group10app2.foo.org.nz',
 		notify => Class["nagios::service"],
 	}
 
@@ -101,7 +101,7 @@ class nagios::config{
 	nagios_hostgroup {'remote-filechange':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Filechange',
-		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz, group10app2.foo.org.nz',
 		notify  => Class["nagios::service"],
 	}
 
@@ -124,7 +124,7 @@ class nagios::config{
 	nagios_hostgroup {'remote-memory':
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Memory',
-		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz, group10app2.foo.org.nz',
 		notify  => Class["nagios::service"],
 	}
 
@@ -147,7 +147,7 @@ class nagios::config{
 	nagios_hostgroup {'remote-disks':	
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Disks',
-		members => 'group10db.foo.org.nz, group10app.foo.org.nz,group10backups.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz,group10backups.foo.org.nz, group10app2.foo.org.nz',
 		notify => Class["nagios::service"],
 	}
 
@@ -170,7 +170,7 @@ class nagios::config{
 	nagios_hostgroup {'remote-processors':	
 		target => '/etc/nagios3/conf.d/ppt_hostgroups.cfg',
 		alias => 'Remote Processors',
-		members => 'group10db.foo.org.nz, group10app.foo.org.nz,group10backups.foo.org.nz',
+		members => 'group10db.foo.org.nz, group10app.foo.org.nz, group10backups.foo.org.nz, group10app2.foo.org.nz',
 		notify => Class["nagios::service"],
 	}
 
@@ -229,6 +229,19 @@ class nagios::config{
 	nagios_host{ "group10app.foo.org.nz":
 		target => "/etc/nagios3/conf.d/ppt_hosts.cfg",
 		alias => "app",
+		check_period => "24x7",
+		max_check_attempts => 3,
+		check_command => "check-host-alive",
+		notification_interval => 30,
+		notification_period => "24x7",
+		notification_options => "d,u,r",
+		mode => 0444,
+	}
+
+
+	nagios_host{ "group10app2.foo.org.nz":
+		target => "/etc/nagios3/conf.d/ppt_hosts.cfg",
+		alias => "app2",
 		check_period => "24x7",
 		max_check_attempts => 3,
 		check_command => "check-host-alive",
